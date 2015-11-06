@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateGrainsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,22 +12,20 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-			Schema::create('users', function (Blueprint $table) {
-				
+			Schema::create('grains', function (Blueprint $table)
+			{			
 				# Increments method will make a Primary, Auto-Incrementing field.
-				$table->increments('id');
+				$table->increments('grain_id');
 				
 				# This generates two columns: `created_at` and `updated_at` to
 				# keep track of changes to a row
 				$table->timestamps();
-
+				
 				# The rest of the fields...
-				$table->string('first_name');
-				$table->string('last_name');
-				$table->string('username');
-				$table->rememberToken();
+				$table->string('grain_type');
+				$table->string('grain_name');
 			});
-    }
+		}
 
     /**
      * Reverse the migrations.
@@ -36,6 +34,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-			Schema::drop('users');
+    	Schema::drop('grains');
     }
 }
