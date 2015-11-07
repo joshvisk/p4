@@ -23,7 +23,7 @@ class CreateGrainsTable extends Migration
 				
 				# The rest of the fields...
 				$table->string('grain_type');
-				$table->string('grain_name');
+				$table->string('grain');
 			});
 		}
 

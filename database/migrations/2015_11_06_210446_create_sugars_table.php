@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHopsTable extends Migration
+class CreateSugarsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,19 +12,19 @@ class CreateHopsTable extends Migration
      */
     public function up()
     {
-			Schema::create('hops', function (Blueprint $table)
+			Schema::create('sugars', function (Blueprint $table)
 			{			
 				# Increments method will make a Primary, Auto-Incrementing field.
-				$table->increments('hops_id');
+				$table->increments('sugar_id');
 				
 				# This generates two columns: `created_at` and `updated_at` to
 				# keep track of changes to a row
 				$table->timestamps();
 				
 				# The rest of the fields...
-				$table->string('hops');
+				$table->string('sugar');
 			});
-		}
+    }
 
     /**
      * Reverse the migrations.
@@ -33,6 +33,6 @@ class CreateHopsTable extends Migration
      */
     public function down()
     {
-    	Schema::drop('hops');
+    	Schema::drop('sugars');
     }
 }

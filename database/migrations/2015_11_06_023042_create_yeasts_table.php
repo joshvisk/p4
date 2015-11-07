@@ -22,7 +22,7 @@ class CreateYeastsTable extends Migration
 				$table->timestamps();
 				
 				# The rest of the fields...
-				$table->string('yeast_name');
+				$table->string('yeast');
 			});
 		}
 

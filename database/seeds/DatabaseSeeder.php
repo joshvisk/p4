@@ -14,7 +14,12 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
+        	$this->call(HopsTableSeeder::class);
+        	$this->call(YeastsTableSeeder::class);
         	$this->call(StatesTableSeeder::class);
+        	$this->call(AdditivesTableSeeder::class);
+        	$this->call(GrainsTableSeeder::class);
+        	$this->call(SugarsTableSeeder::class);
 
         Model::reguard();
     }

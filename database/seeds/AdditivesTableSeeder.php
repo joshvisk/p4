@@ -68,7 +68,7 @@ class AdditivesTableSeeder extends Seeder
 			DB::table('additives')->insert([
 					'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 					'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-					'additive' => 'Clarity Firmn',
+					'additive' => 'Clarity Firm',
 			]);
 			
 			DB::table('additives')->insert([
