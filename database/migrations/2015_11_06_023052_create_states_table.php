@@ -12,19 +12,19 @@ class CreateStatesTable extends Migration
      */
     public function up()
     {
-			Schema::create('states', function (Blueprint $table)
-			{			
-				# Increments method will make a Primary, Auto-Incrementing field.
-				$table->increments('state_id');
-				
-				# This generates two columns: `created_at` and `updated_at` to
-				# keep track of changes to a row
-				$table->timestamps();
-				
-				# The rest of the fields...
-				$table->string('state');
-			});
-		}
+		Schema::create('states', function (Blueprint $table)
+		{			
+			# Increments method will make a Primary, Auto-Incrementing field.
+			$table->increments('state_id');
+			
+			# This generates two columns: `created_at` and `updated_at` to
+			# keep track of changes to a row
+			$table->timestamps();
+			
+			# The rest of the fields...
+			$table->string('state');
+		});
+	}
 
     /**
      * Reverse the migrations.

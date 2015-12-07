@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use DB;
 
-class BeerController extends Controller
+class userController extends Controller
 {
 	public function __construct() {
 			# Put anything here that should happen before any of the other actions
@@ -15,12 +16,23 @@ class BeerController extends Controller
 	
     public function getUser()
     {
-        return 'This displays the user profile';
+		$states = DB::table('states')->orderBy('state')->get();
+		return view('user.user')->with('states', $states);
+        //return 'This displays the user profile';
 
     }
-   public function postUser()
+   public function postUser(Request $request)
     {
-        return 'This returns the user after they add/change profile attributes or login';
+        $user_data = $request->all();
+		$user = new \App\User;
+		$user->first_name = $user_data['first_name'];
+		$user->last_name = $user_data['last_name'];
+		$user->username = $user_data['username'];
+		$user->save();		
+		
+		//dump($all);
+		\Session::flash('flash_message', 'User was successfully added!');
+		return 'This returns the user after they add/change profile attributes or login';
 
     }
 	

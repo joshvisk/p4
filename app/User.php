@@ -36,4 +36,34 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+	
+	public function beer() {
+        # User has many beers
+        # Define a one-to-many relationship.
+        return $this->hasMany('\App\Beer');
+    }
+	
+	public function address() {
+        # User has many addresses
+        # Define a one-to-many relationship.
+        return $this->hasMany('\App\Address');
+    }
+	
+	public function phone() {
+        # User has many phone numbers
+        # Define a one-to-many relationship.
+        return $this->hasMany('\App\Address');
+    }
+	
+	public function email() {
+        # User has many emails
+        # Define a one-to-many relationship.
+        return $this->hasMany('\App\Address');
+    }
+	
+	public function password() {
+        # User has many Passwords
+        # Define a one-to-many relationship.
+        return $this->hasMany('\App\Address');
+    }
 }

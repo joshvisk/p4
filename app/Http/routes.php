@@ -14,6 +14,20 @@
 Route::get('/', function () {
     return view('welcome');
 });
+# Show login form
+Route::get('/login', 'Auth\AuthController@getLogin');
+
+# Process login form
+Route::post('/login', 'Auth\AuthController@postLogin');
+
+# Process logout
+Route::get('/logout', 'Auth\AuthController@getLogout');
+
+# Show registration form
+Route::get('/register', 'Auth\AuthController@getRegister');
+
+# Process registration form
+Route::post('/register', 'Auth\AuthController@postRegister');
 
 // Route allows the developer to view logs from the \logs uri
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
@@ -29,7 +43,6 @@ Route::get('/user', 'UserController@getUser');
 Route::post('/user', 'UserController@postUser');
 Route::get('/user/create', 'UserController@getCreate');
 Route::get('/user/modify', 'UserController@getModify');
-Route::get('/login', 'UserController@getLogin');
 
 Route::get('/debug', function() {
 
