@@ -18,19 +18,19 @@
 
         {!! csrf_field() !!}
 
-        <div class='form-group'>
-            <label for='username'>Username</label>
-            <input type='text' name='username' id='username' value='{{ old('username') }}'>
+		<div class='form-group'>
+            {!! Form::label('username', 'Username') !!}<br />
+            {!! Form::text('username', "") !!}<br /><br />
         </div>
 
         <div class='form-group'>
-            <label for='password'>Password</label>
-            <input type='password' name='password' id='password' value='{{ old('password') }}'>
-        </div>
+            {!! Form::label('password', 'Password') !!}<br />
+            {!! Form::password('password') !!}<br /><br />
+        </div> 
 
         <div class='form-group'>
-            <input type='checkbox' name='remember' id='remember'>
-            <label for='remember' class='checkboxLabel'>Remember me</label>
+            {!! Form::checkbox('remember', 1, null, ['class' => 'checkboxLabel', 'id' => 'remember']) !!}
+            {!! Form::label('remember', 'Remember Me', array('class' => 'checkboxLabel')) !!}
         </div>
 
         <button type='submit' class='btn btn-primary'>Login</button>

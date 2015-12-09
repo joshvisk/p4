@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
+use App\Beer;
 
 class BeerController extends Controller
 {
@@ -17,7 +18,6 @@ class BeerController extends Controller
 	{
 		$beers = \App\Beer::all();
 	
-		//$beers = DB::table('beers')->get();	
 		return view('beer.beer')->with('beers', $beers);
 
 	}
@@ -29,10 +29,15 @@ class BeerController extends Controller
 		return 'This is how you come back to the beer recipe page after posting a new one';
 	}
 
-	public function getRecipe()
+	public function getRecipe($id = null)
 	{
+		$beer = \App\Beer::with('ingredient')->where('id', $id)->first();
+		dump($beer->toArray());
+		$ingredient = $beer->first(function ('ingredient', 'grain') {
+			return $item > 2; });
+		dump($ingredient);
 		
-		return 'This is where you view a selected recipe';
+		return view('beer.recipe')->with('beer', $beer);
 	}
 
 	public function getCreate()

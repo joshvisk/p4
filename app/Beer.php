@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Beer extends Model
 {
-	public function beer() {
-        # Beer has many Recipes
+	public function ingredient() {
+        # Beer has many Ingredients
         # Define a one-to-many relationship.
         return $this->hasMany('\App\Ingredient');
     }

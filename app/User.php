@@ -28,7 +28,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['last_name', 'first_name', 'username', 'email', 'password'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -52,18 +52,18 @@ class User extends Model implements AuthenticatableContract,
 	public function phone() {
         # User has many phone numbers
         # Define a one-to-many relationship.
-        return $this->hasMany('\App\Address');
+        return $this->hasMany('\App\phone');
     }
 	
 	public function email() {
         # User has many emails
         # Define a one-to-many relationship.
-        return $this->hasMany('\App\Address');
+        return $this->hasMany('\App\email');
     }
 	
 	public function password() {
         # User has many Passwords
         # Define a one-to-many relationship.
-        return $this->hasMany('\App\Address');
+        return $this->hasMany('\App\password');
     }
 }

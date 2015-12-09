@@ -23,18 +23,20 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myDefaultNavbar1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                    <a class="navbar-brand" href="#">Brand</a>
+                    <a class="navbar-brand" href="/">Brand</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="myDefaultNavbar1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/beer">Beer<span class="sr-only">(current)</span></a></li>
-                    <li class="dropdown"> <a href="/beer" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Beer <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="/beer">List</a></li>
-                            <li><a href="/beer/create">Create</a></li>
-                        </ul>
-                    </li>
+					@if(Auth::check())
+                        <li class="active"><a href="/beer">Beer<span class="sr-only">(current)</span></a></li>
+                        <li class="active"><a href="/beer/create">Create Recipe<span class="sr-only">(current)</span></a></li>
+                        <li class="active"><a href="/logout">Logout<span class="sr-only">(current)</span></a></li>
+                    @else
+                        <li class="active"><a href="/beer">Beer<span class="sr-only">(current)</span></a></li>                    	
+                        <li class="active"><a href="/login">Login<span class="sr-only">(current)</span></a></li>
+                        <li class="active"><a href="/register">Register<span class="sr-only">(current)</span></a></li>
+                    @endif
                 </ul>
 <!--                <form class="navbar-form navbar-right" role="search">
                     <div class="form-group">
@@ -50,7 +52,7 @@
     <section>
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
+                <div class="col-lg-12">
                     @if(\Session::has('flash_message'))
                         <div class='flash_message'>
                             @if(\Session::has('flash_message'))

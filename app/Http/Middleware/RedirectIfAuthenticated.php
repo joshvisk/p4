@@ -35,7 +35,8 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next)
     {
         if ($this->auth->check()) {
-            return redirect('/home');
+			\Session::flash('flash_message', 'You cannot view this page if you are already logged in!');			
+            return redirect('/beer');
         }
 
         return $next($request);

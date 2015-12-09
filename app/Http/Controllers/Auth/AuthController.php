@@ -8,6 +8,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
+use App\Http\Requests;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+
 class AuthController extends Controller
 {
     /*
@@ -22,6 +27,15 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+	
+	# Where should the user be redirected to if their login succeeds?
+	protected $redirectPath = '/beer';
+
+	# Where should the user be redirected to if their login fails?
+	protected $loginPath = '/login';
+	
+	# Where should the user be redirected to after logging out?
+	protected $redirectAfterLogout = '/beer';
 
     /**
      * Create a new authentication controller instance.
@@ -42,7 +56,7 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'userame' => 'required|max:255',
+            'username' => 'required|max:255|unique:users',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
@@ -54,15 +68,20 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
+    public function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        return User::Create([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+			'phone' => $data['phone'],
         ]);
     }
 	
+	
+	// I've added the bottom two functions
 	public function getRegister()
     {
 		$states = \DB::table('states')->orderBy('state')->get();
@@ -78,9 +97,15 @@ class AuthController extends Controller
                 $request, $validator
             );
         }
-
         Auth::login($this->create($request->all()));
 
         return redirect($this->redirectPath());
+    }
+	
+	    public function getLogout()
+    {
+        Auth::logout();
+		\Session::flash('flash_message', 'Logout was successful!');
+        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
     }
 }

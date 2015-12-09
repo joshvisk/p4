@@ -29,20 +29,27 @@ Route::get('/register', 'Auth\AuthController@getRegister');
 # Process registration form
 Route::post('/register', 'Auth\AuthController@postRegister');
 
-// Route allows the developer to view logs from the \logs uri
-Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
 
 // Route uses the BeerController to direct the user to the beer page to view list of recipes 
 Route::get('/beer', 'BeerController@getBeer');
-Route::post('/beer', 'BeerController@postBeer');
-Route::get('/beer/recipe', 'BeerController@getRecipe');
-Route::get('/beer/recipe/create', 'BeerController@getCreate');
+Route::get('/beer/recipe/{id}', 'BeerController@getRecipe')
+	->where('id', '[0-9]+');
 
-// Route uses the BeerController to direct the user to the user pages to login/add/modify accounts
-Route::get('/user', 'UserController@getUser');
-Route::post('/user', 'UserController@postUser');
-Route::get('/user/create', 'UserController@getCreate');
-Route::get('/user/modify', 'UserController@getModify');
+Route::group(['middleware' => 'auth'], function() {
+	
+	Route::post('/beer/recipe', 'BeerController@getRecipe');
+	Route::get('/beer/create', 'BeerController@getRecipe');
+});
+
+// Route uses the UserController to direct the user to the user pages to login/add/modify accounts
+//Route::get('/user', 'UserController@getUser');
+//Route::post('/user', 'UserController@postUser');
+//Route::get('/user/create', 'UserController@getCreate');
+//Route::get('/user/modify', 'UserController@getModify');
+
+// Route allows the developer to view logs from the \logs uri
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
 Route::get('/debug', function() {
 
@@ -76,5 +83,19 @@ Route::get('/debug', function() {
     }
 
     echo '</pre>';
+});
 
+Route::get('/confirm-login-worked', function() {
+
+    # You may access the authenticated user via the Auth facade
+    $user = Auth::user();
+
+    if($user) {
+        echo 'You are logged in.';
+        dump($user->toArray());
+    } else {
+        echo 'You are not logged in.';
+    }
+
+    return;
 });

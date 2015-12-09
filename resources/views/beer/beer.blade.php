@@ -3,7 +3,8 @@
 @section('content')
 <div>
     @foreach($beers as $beer)
-        <h4>{!! $beer->beer_name !!}</h4><br />
+		<hr>
+        {!! $beer->beer_name !!}<a href="/beer/recipe/{{ $beer->id }}" class="btn btn-info">View</a><br>
     @endforeach
 </div>
 @stop
