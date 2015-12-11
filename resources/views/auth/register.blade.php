@@ -63,7 +63,6 @@
         </div>
        	{!! Form::submit('Register', array('class' => 'btn btn-primary')) !!}
 
-        <!--<button type='submit' class='btn btn-primary'>Register</button>-->    
 	{!! Form::close() !!}
 
 @stop

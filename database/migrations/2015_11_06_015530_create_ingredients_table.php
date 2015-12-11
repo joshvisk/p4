@@ -22,6 +22,7 @@ class CreateIngredientsTable extends Migration
 			$table->timestamps();
 			
 			# The rest of the fields...
+			$table->integer('type');	
 			$table->integer('grain');	
 			$table->decimal('grain_amt');	
 			$table->integer('hops');	

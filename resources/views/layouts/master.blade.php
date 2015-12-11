@@ -9,7 +9,7 @@
     {!! Html::style("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css") !!}
     {!! Html::script("http://code.jquery.com/jquery-1.11.3.min.js") !!}
     {!! Html::script("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js") !!}
-    @yield('head')
+    @yield('header')
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -38,12 +38,6 @@
                         <li class="active"><a href="/register">Register<span class="sr-only">(current)</span></a></li>
                     @endif
                 </ul>
-<!--                <form class="navbar-form navbar-right" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>-->
             </div>
         <!-- /.navbar-collapse --> 
         </div>
@@ -68,8 +62,7 @@
             </div>
         </div>
     </section>
-    <hr>
-    <div class="section well">
+<!--    <div class="section well">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4">
@@ -105,7 +98,7 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </footer>-->
 	<script src="temp/js/jquery-1.11.2.min.js"></script> 
     <script src="temp/js/bootstrap.min.js"></script>
 </body>
