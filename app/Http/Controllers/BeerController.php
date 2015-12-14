@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use DB;
 use Auth;
-use App\Beer;
-use Illuminate\Http\Request;
 
 class BeerController extends Controller
 {
@@ -18,8 +17,8 @@ class BeerController extends Controller
 		
 	public function getBeer()
 	{
-		$beers = \App\Beer::all();
-	
+		$beers = \App\Beer::with('user')->get();
+		
 		return view('beer.beer')
 			->with('beers', $beers)
 			->with('user', Auth::user());
@@ -76,21 +75,48 @@ class BeerController extends Controller
 
 	public function getRecipe($id = null)
 	{
-		$beer = \App\Beer::with('ingredient')->where('id', $id)->first();
-		$grains = \DB::table('grains')->get();
-		$ingredient = $beer->ingredient;
+		$beer = \App\Beer::with('recipe')->where('id', $id)->first();
+		$recipe = $beer->recipe;
+		
+		$ingredient = $beer->recipe;
 		dump($beer->toArray());
 		dump($ingredient->toArray());
-		dump($grains);
-		return view('beer.recipe')->with(['beer' => $beer, 'ingredients' => $ingredient, 'grains' => $grains]);
+		return view('beer.recipe')->with(['beer' => $beer, 'recipe' => $recipe]);
 	}
 
 	public function getCreate()
 	{	
-		$grains = \DB::table('grains')->get();
-		$hops = \DB::table('hops')->get();
-		$yeasts = \DB::table('yeasts')->get();
-		$additives = \DB::table('additives')->get();
+		$grains = DB::table('grains')->get();
+		$hops = DB::table('hops')->get();
+		$yeasts = DB::table('yeasts')->get();
+		$additives = DB::table('additives')->get();
 		return view('beer.create')->with(['grains' => $grains, 'hops' => $hops, 'yeasts' => $yeasts, 'additives' => $additives]);
+	}
+	
+	public function getDelete($id)
+	{
+		$beer = \App\Beer::find($id);
+		$ingredients = \App\ingredient::get()->where('beer_id', ($id));
+				
+		if(is_null($beer))
+		{
+			\Session::flash('flash_message', 'Beer not found.');
+			return redirect('beers');	
+		}
+		
+		if($beer->recipe())
+		{
+			$beer->recipe()->detach();
+		}
+		
+/*		foreach($ingredients as $ingredient)
+		{
+			$ingredient->delete();	
+		}*/
+		
+		$beer->delete();
+		
+		\Session::flash('flash_message', $beer->name.' was deleted.');
+		return redirect('/beer');
 	}
 }

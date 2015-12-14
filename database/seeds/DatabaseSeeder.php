@@ -15,18 +15,11 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
          	$this->call(UsersTableSeeder::class);
-        	$this->call(AddressesTableSeeder::class);
-	       	$this->call(EmailsTableSeeder::class);
-         	$this->call(PasswordsTableSeeder::class);
-        	$this->call(PhonesTableSeeder::class);
         	$this->call(BeersTableSeeder::class);
-        	$this->call(AdditivesTableSeeder::class);
-        	$this->call(GrainsTableSeeder::class);
-        	$this->call(HopsTableSeeder::class);
-        	$this->call(StatesTableSeeder::class);
-        	$this->call(SugarsTableSeeder::class);
-	       	$this->call(YeastsTableSeeder::class);
 	       	$this->call(IngredientsTableSeeder::class);
+			$this->call(RecipesTableSeeder::class);
+        	$this->call(StatesTableSeeder::class);
+			$this->call(IngredientRecipeTableSeeder::class);
 
         Model::reguard();
     }

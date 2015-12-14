@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ingredient extends Model
 {
-    public function beer() {
+    public function recipe() {
         # INgredient belongs to Recipe
         # Define an inverse one-to-many relationship.
-        return $this->belongsTo('\App\Beer');
+        return $this->belongsToMany('\App\Recipe')->withTimestamps();
     }}

@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Beer extends Model
 {
-	public function ingredient() {
-        # Beer has many Ingredients
-        # Define a one-to-many relationship.
-        return $this->hasMany('\App\Ingredient');
+	public function recipe() {
+        # Beer has one recipe
+        # Define a one-to-one relationship.
+        return $this->hasOne('\App\Recipe');
     }
 	
 	public function user() {

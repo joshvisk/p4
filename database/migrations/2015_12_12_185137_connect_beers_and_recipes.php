@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ConnectBeersAndIngredients extends Migration
+class ConnectBeersAndRecipes extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,9 @@ class ConnectBeersAndIngredients extends Migration
      */
     public function up()
     {
-		Schema::table('ingredients', function (Blueprint $table) {
+		Schema::table('recipes', function (Blueprint $table) {
 			$table->integer('beer_id')->unsigned();
-			$table->foreign('beer_id')->references('id')->on('beers')->onUpdate('cascade')
-				  ->onDelete('cascade');
+			$table->foreign('beer_id')->references('id')->on('beers');
 		});
     }
 
@@ -26,8 +25,8 @@ class ConnectBeersAndIngredients extends Migration
      */
     public function down()
     {
-		Schema::table('ingredients', function (Blueprint $table) {
-			$table->dropForeign('ingredients_beer_id_foreign');
+		Schema::table('recipes', function (Blueprint $table) {
+			$table->dropForeign('recipes_beer_id_foreign');
 			$table->dropColumn('beer_id');
 		});
 	}

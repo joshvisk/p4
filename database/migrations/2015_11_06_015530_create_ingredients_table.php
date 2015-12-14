@@ -22,19 +22,9 @@ class CreateIngredientsTable extends Migration
 			$table->timestamps();
 			
 			# The rest of the fields...
-			$table->integer('type');	
-			$table->integer('grain');	
-			$table->decimal('grain_amt');	
-			$table->integer('hops');	
-			$table->decimal('hops_amt');	
-			$table->integer('hop_type');	
-			$table->integer('yeast');	
-			$table->decimal('yeast_amt');
-			$table->integer('additive');
-			$table->decimal('additive_amt');
-			$table->integer('additive_measure');	
-			$table->decimal('water_amt');	
-			$table->integer('boil_time');
+			$table->integer('type');
+			$table->string('name');
+			$table->string('grain_type');
 		});
 	}
 

@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth'], function() {
 	
 	Route::post('/beer', 'BeerController@postBeer');
 	Route::get('/beer/create', 'BeerController@getCreate');
+	Route::get('/beer/delete/{id}', 'BeerController@getDelete');
 });
 
 // Route allows the developer to view logs from the \logs uri

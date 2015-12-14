@@ -58,7 +58,7 @@ class User extends Model implements AuthenticatableContract,
 	public function email() {
         # User has many emails
         # Define a one-to-many relationship.
-        return $this->hasMany('\App\email');
+        return $this->hasOne('\App\email');
     }
 	
 	public function password() {
