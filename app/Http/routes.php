@@ -93,3 +93,25 @@ Route::get('/confirm-login-worked', function() {
 
     return;
 });
+
+Route::get('/test', function() {
+	$recipes = [
+		'1' => ['2 Row Malt','Crystal Malt 40L','Munich Malt','Victory Malt','Columbus', 'Cascade', 'Wyeast 1056-Ale American', 'Amylase Enzyme'],
+		'5' => ['2 Row Malt','Crystal Malt 80L','Cascade','Sterling','Wyeast 1007-Ale German']
+	];
+
+	# Now loop through the above array, creating a new pivot for each recipe to ingredient
+	foreach($recipes as $id => $ingredients) {
+
+		# First get the recipe
+		$recipe = \App\Recipe::where('beer_id','LIKE',$id)->first();
+
+		# Now loop through each ingredient for this recipe, adding the pivot
+		foreach($ingredients as $ingredientName) {
+			$ingredient = \App\Ingredient::where('name','LIKE',$ingredientName)->first();
+			# Connect this ingredient to this recipe
+			$recipe->ingredients()->save($ingredient);
+		}
+
+	}
+});

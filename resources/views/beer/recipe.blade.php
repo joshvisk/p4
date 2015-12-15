@@ -1,37 +1,61 @@
 @extends('layouts.master')
 @section('content')
-	<h1>{!! $beer->beer_name !!}</h1>
+	<h1>{!! $beer->beer_name !!}<a href="/beer/recipe/edit/{{ $beer->id }}" class="btn btn-info">Edit</a></h1>
     <h4>Ingredients:</h4>
     <div>
     	<p><b>Grains</b></p>
-        @foreach($recipe as $item)
+        @foreach($beer->recipes as $item)
             @if($item->type === 1) <!--check if grain-->
-            	<p>{!! $item->grain_amt !!} Grain Type</p>
+            	@foreach($ingredients as $ingredient)
+                	@if($ingredient->id === $item->ingredient_id) <!--grabbing ingredient name-->
+            			<p>{!! $item->amt !!} {{  $item->measure }} <i>{{ $ingredient->name }}</i></p>
+                    @endif
+                @endforeach
             @endif
         @endforeach
     	<p><b>Hops</b></p>
-        @foreach($recipe as $item)
-            @if($item->type === 2) <!--check if hops-->
-            	<p>{!! $item->hops_amt !!} Hop Type</p>
+        @foreach($beer->recipes as $item)
+            @if($item->type === 2) <!--check if grain-->
+            	@foreach($ingredients as $ingredient)
+                	@if($ingredient->id === $item->ingredient_id) <!--grabbing ingredient name-->
+            			<p>{!! $item->amt !!} {{  $item->measure }} <i>{{ $ingredient->name }}</i></p>
+                    @endif
+                @endforeach
             @endif
-        @endforeach   		           		
+        @endforeach
      	<p><b>Yeast</b></p>
-        @foreach($recipe as $item)
-            @if($item->type === 3) <!--check if Yeast-->
-            	<p>{!! $item->yeast_amt !!} Yeast Type</p>
+        @foreach($beer->recipes as $item)
+            @if($item->type === 3) <!--check if grain-->
+            	@foreach($ingredients as $ingredient)
+                	@if($ingredient->id === $item->ingredient_id) <!--grabbing ingredient name-->
+            			<p>{!! $item->amt !!} {{  $item->measure }} <i>{{ $ingredient->name }}</i></p>
+                    @endif
+                @endforeach
             @endif
-        @endforeach   		
+        @endforeach
     	<p><b>Sugar</b></p>
-        @foreach($recipe as $item)
-            @if($item->type === 4) <!--check if Sugar-->
-            	<p>{!! $item->sugar_amt !!} Sugar Type</p>
+        @foreach($beer->recipes as $item)
+            @if($item->type === 1) <!--check if grain-->
+            	@foreach($ingredients as $ingredient)
+                	@if($ingredient->id === $item->ingredient_id) <!--grabbing ingredient name-->
+            			<p>{!! $item->amt !!} {{  $item->measure }} <i>{{ $ingredient->name }}</i></p>
+                    @endif
+                @endforeach
             @endif
-        @endforeach   		 
+        @endforeach
     	<p><b>Additives</b></p>
-        @foreach($recipe as $item)
-            @if($item->type === 5) <!--check if Additives-->
-            	<p>{!! $item->additive_amt !!} Additives Type</p>
+         @foreach($beer->recipes as $item)
+            @if($item->type === 5) <!--check if grain-->
+            	@foreach($ingredients as $ingredient)
+                	@if($ingredient->id === $item->ingredient_id) <!--grabbing ingredient name-->
+            			<p>{!! $item->amt !!} {{  $item->measure }} <i>{{ $ingredient->name }}</i></p>
+                    @endif
+                @endforeach
             @endif
-        @endforeach   		
+        @endforeach
+    </div>
+    <div>
+    	<h4>Directions</h4>
+        {{  $beer->directions }}
     </div>
 @stop

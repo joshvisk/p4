@@ -66,5 +66,27 @@ class BeersTableSeeder extends Seeder
 			'mash_time' => '60',
 			'directions' => 'Inf',
   		]);		
+
+		DB::table('beers')->insert([
+			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+			'beer_name' => 'Alaskan Amber',
+			'user_id' => 1,
+			'public' => 0,
+			'mash_time' => '60',
+			'directions' => 'Add cracked Crystal malt in a steeping bag to 2 gals of cold water and bring to a boil.
+				When boiling starts, remove the grain and shut off the heat.
+				Add malt extract, and stir until fully disovled.
+				Return to heat and bring to a boil for 5 minutes, then add the boiling hops. (1/2 oz Cascade)
+				Continue boiling for 20 mins then add 1/4 oz each of Cascade and Sterling/Saaz hops.
+				Continue to boil for 20 mins then add 1/2 oz of Sterling/Saaz hops.
+				Continue to boil for 18 mins then add 1/4 oz of Sterling/Saaz hops.
+				Continue to boil for 2 mins.
+				Fill your fermenter with 2 gals of cold water(40º).
+				Remove and rinse(sparge) the hops with 1 quart of cold water into the fermenter.
+				Add the wort to the fermenter with cold water to make 5 gals.
+				Add yeast when the temp reaches 70º. Aerate the wort(shaking works well). Ferment at 65º to 70º for 1 week.
+				Rack to a secondary fermenter. Let it age to clarity, then bottle or keg.',
+		]);
 	}
 }

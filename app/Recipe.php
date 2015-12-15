@@ -12,9 +12,9 @@ class Recipe extends Model
         return $this->belongsTo('\App\Beer');
     }
 	
-	public function ingredient() {
+	public function ingredients() {
         # Recipe has many ingredients
-        # Define a one-to-many relationship.
+        # Define a many-to-many relationship.
         return $this->hasMany('\App\Ingredient');
     }
 }

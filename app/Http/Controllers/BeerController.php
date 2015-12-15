@@ -75,44 +75,29 @@ class BeerController extends Controller
 
 	public function getRecipe($id = null)
 	{
-		$beer = \App\Beer::with('recipe')->where('id', $id)->first();
-		$recipe = $beer->recipe;
-		
-		$ingredient = $beer->recipe;
-		dump($beer->toArray());
-		dump($ingredient->toArray());
-		return view('beer.recipe')->with(['beer' => $beer, 'recipe' => $recipe]);
+		$beer = \App\Beer::with('recipes')->where('id', $id)->first();
+		$ingredients = \App\Ingredient::get();
+
+		//dump($beer->toArray());
+		return view('beer.recipe')->with(['beer' => $beer, 'ingredients' => $ingredients]);
 	}
 
 	public function getCreate()
 	{	
-		$grains = DB::table('grains')->get();
-		$hops = DB::table('hops')->get();
-		$yeasts = DB::table('yeasts')->get();
-		$additives = DB::table('additives')->get();
-		return view('beer.create')->with(['grains' => $grains, 'hops' => $hops, 'yeasts' => $yeasts, 'additives' => $additives]);
+		$ingredients = \App\Ingredient::get();
+
+		return view('beer.create')->with('ingredients', $ingredients);
 	}
 	
 	public function getDelete($id)
 	{
 		$beer = \App\Beer::find($id);
-		$ingredients = \App\ingredient::get()->where('beer_id', ($id));
-				
-		if(is_null($beer))
+		$recipe = \App\Recipe::where('beer_id', $id)->get();
+					
+		foreach($recipe as $item)
 		{
-			\Session::flash('flash_message', 'Beer not found.');
-			return redirect('beers');	
+			$item->delete();
 		}
-		
-		if($beer->recipe())
-		{
-			$beer->recipe()->detach();
-		}
-		
-/*		foreach($ingredients as $ingredient)
-		{
-			$ingredient->delete();	
-		}*/
 		
 		$beer->delete();
 		
