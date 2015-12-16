@@ -28,49 +28,208 @@ class BeerController extends Controller
 
 	public function postBeer(Request $request)
 	{
+		dump($request);
 		$beer = new \App\Beer();
+		$recipe = new \App\Recipe();
         $beer->beer_name = $request->beer_name;
-		$beer->public = true;
+		$beer->public = $request->personal;
 		$beer->user_id = Auth::id();
 		$beer->save();
-		
-		dump($request);
-		
-/*		foreach($request as $item) {
-			$ingredient = new \App\Ingredient();
-			switch($item) {
-				case $item->grain_amt > 0:
-					$ingredient->type = 1;
-					$ingredient->grain = $item->grain;
-					$ingredient->grain_amt = $item->grain_amt;
-					$ingredient->beer_id = $beer->id;
-					$ingredient->save();
-					break;
-				case $item->hop_amt > 0:
-					$ingredient->type = 2;
-					$ingredient->hops = $item->hops;
-					$ingredient->hops_amt = $item->hops_amt;
-					$ingredient->hops_type = $item->hops_type;				
-					$ingredient->beer_id = $beer->id;
-					$ingredient->save();
-					break;
-				case $item->yeast_amt > 0:
-					$ingredient->type = 3;
-					$ingredient->yeast_amt = $item->yeast_amt;
-					$ingredient->yeast = $item->yeast;
-					$ingredient->beer_id = $beer->id;
-					$ingredient->save();
-					break;
-				case $item->additive_amt > 0:
-					$ingredient->type = 4;
-					$ingredient->additive = $item->additive;
-					$ingredient->additive_amt = $item->additive_amt;
-					$ingredient->beer_id = $beer->id;
-					$ingredient->save();
-					break;
-			}
-		}*/
-		return 'This is how you come back to the beer recipe page after posting a new one';
+		// Grain 1
+		if($request->input("grain1")) {
+			$recipe->type = 1;
+		};
+		$recipe->amt = $request->grainAmt1;
+		$recipe->measure = $request->grainMeasure1;
+		$recipe->beer()->associate($beer);
+		$recipe->ingredient_id = $request->grain1;
+		$recipe->save();
+		// Grain 2
+		if($request->input("grain2")) {
+			$recipe->type = 1;
+		};
+		$recipe->amt = $request->grainAmt2;
+		$recipe->measure = $request->grainMeasure2;
+		$recipe->beer()->associate($beer);
+		$recipe->ingredient_id = $request->grain2;
+		$recipe->save();		
+		// Grain 3
+		if($request->input("grain3")) {
+			$recipe->type = 1;
+		};
+		$recipe->amt = $request->grainAmt3;
+		$recipe->measure = $request->grainMeasure3;
+		$recipe->beer()->associate($beer);
+		$recipe->ingredient_id = $request->grain3;
+		$recipe->save();	
+		// Grain 4
+		if($request->input("grain4")) {
+			$recipe->type = 1;
+		};
+		$recipe->amt = $request->grainAmt4;
+		$recipe->measure = $request->grainMeasure4;
+		$recipe->beer()->associate($beer);
+		$recipe->ingredient_id = $request->grain4;
+		$recipe->save();	
+		// Grain 5
+		if($request->input("grain5")) {
+			$recipe->type = 1;
+		};
+		$recipe->amt = $request->grainAmt5;
+		$recipe->measure = $request->grainMeasure5;
+		$recipe->beer()->associate($beer);
+		$recipe->ingredient_id = $request->grain5;
+		$recipe->save();
+
+		// Hops 1
+		if($request->input("hops1")) {
+			$recipe->type = 2;
+		};
+		$recipe->amt = $request->hopsAmt1;
+		$recipe->measure = $request->hopsMeasure1;
+		$recipe->beer()->associate($beer);
+		$recipe->ingredient_id = $request->hops1;
+		$recipe->save();
+		// Hops 2
+		if($request->input("hops2")) {
+			$recipe->type = 2;
+		};
+		$recipe->amt = $request->hopsAmt2;
+		$recipe->measure = $request->hopsMeasure2;
+		$recipe->beer()->associate($beer);
+		$recipe->ingredient_id = $request->hops2;
+		$recipe->save();		
+		// Hops 3
+		if($request->input("hops3")) {
+			$recipe->type = 2;
+		};
+		$recipe->amt = $request->hopsAmt3;
+		$recipe->measure = $request->hopsMeasure3;
+		$recipe->beer()->associate($beer);
+		$recipe->ingredient_id = $request->hops3;
+		$recipe->save();	
+		// Hops 4
+		if($request->input("hops4")) {
+			$recipe->type = 2;
+		};
+		$recipe->amt = $request->hopsAmt4;
+		$recipe->measure = $request->hopsMeasure4;
+		$recipe->beer()->associate($beer);
+		$recipe->ingredient_id = $request->hops4;
+		$recipe->save();	
+		// Hops 5
+		if($request->input("hops5")) {
+			$recipe->type = 2;
+		};
+		$recipe->amt = $request->hopsAmt5;
+		$recipe->measure = $request->hopsMeasure5;
+		$recipe->beer()->associate($beer);
+		$recipe->ingredient_id = $request->hops5;
+		$recipe->save();
+				
+		// Yeast
+		if($request->input("yeast")) {
+			$recipe->type = 3;
+		};
+		$recipe->amt = $request->yeastAmt;
+		$recipe->measure = $request->yeastMeasure;
+		$recipe->beer()->associate($beer);
+		$recipe->ingredient_id = $request->yeast;
+		$recipe->save();
+
+		// Sugar 1
+		if($request->input("Sugar1")) {
+			$recipe->type = 4;
+		};
+		$recipe->amt = $request->SugarAmt1;
+		$recipe->measure = $request->SugarMeasure1;
+		$recipe->beer()->associate($beer);
+		$recipe->ingredient_id = $request->Sugar1;
+		$recipe->save();
+		// Sugar 2
+		if($request->input("Sugar2")) {
+			$recipe->type = 4;
+		};
+		$recipe->amt = $request->SugarAmt2;
+		$recipe->measure = $request->SugarMeasure2;
+		$recipe->beer()->associate($beer);
+		$recipe->ingredient_id = $request->Sugar2;
+		$recipe->save();		
+		// Sugar 3
+		if($request->input("Sugar3")) {
+			$recipe->type = 4;
+		};
+		$recipe->amt = $request->SugarAmt3;
+		$recipe->measure = $request->SugarMeasure3;
+		$recipe->beer()->associate($beer);
+		$recipe->ingredient_id = $request->Sugar3;
+		$recipe->save();	
+		// Sugar 4
+		if($request->input("Sugar4")) {
+			$recipe->type = 4;
+		};
+		$recipe->amt = $request->SugarAmt4;
+		$recipe->measure = $request->SugarMeasure4;
+		$recipe->beer()->associate($beer);
+		$recipe->ingredient_id = $request->Sugar4;
+		$recipe->save();	
+		// Sugar 5
+		if($request->input("Sugar5")) {
+			$recipe->type = 4;
+		};
+		$recipe->amt = $request->SugarAmt5;
+		$recipe->measure = $request->SugarMeasure5;
+		$recipe->beer()->associate($beer);
+		$recipe->ingredient_id = $request->Sugar5;
+		$recipe->save();
+			
+		// Additive 1
+		if($request->input("Additive1")) {
+			$recipe->type = 5;
+		};
+		$recipe->amt = $request->AdditiveAmt1;
+		$recipe->measure = $request->AdditiveMeasure1;
+		$recipe->beer()->associate($beer);
+		$recipe->ingredient_id = $request->Additive1;
+		$recipe->save();
+		// Additive 2
+		if($request->input("Additive2")) {
+			$recipe->type = 5;
+		};
+		$recipe->amt = $request->AdditiveAmt2;
+		$recipe->measure = $request->AdditiveMeasure2;
+		$recipe->beer()->associate($beer);
+		$recipe->ingredient_id = $request->Additive2;
+		$recipe->save();		
+		// Additive 3
+		if($request->input("Additive3")) {
+			$recipe->type = 5;
+		};
+		$recipe->amt = $request->AdditiveAmt3;
+		$recipe->measure = $request->AdditiveMeasure3;
+		$recipe->beer()->associate($beer);
+		$recipe->ingredient_id = $request->Additive3;
+		$recipe->save();	
+		// Additive 4
+		if($request->input("Additive4")) {
+			$recipe->type = 5;
+		};
+		$recipe->amt = $request->AdditiveAmt4;
+		$recipe->measure = $request->AdditiveMeasure4;
+		$recipe->beer()->associate($beer);
+		$recipe->ingredient_id = $request->Additive4;
+		$recipe->save();	
+		// Additive 5
+		if($request->input("Additive5")) {
+			$recipe->type = 5;
+		};
+		$recipe->amt = $request->AdditiveAmt5;
+		$recipe->measure = $request->AdditiveMeasure5;
+		$recipe->beer()->associate($beer);
+		$recipe->ingredient_id = $request->Additive5;
+		$recipe->save();
+			
+		return redirect('/beer');
 	}
 
 	public function getRecipe($id = null)
@@ -103,5 +262,17 @@ class BeerController extends Controller
 		
 		\Session::flash('flash_message', $beer->name.' was deleted.');
 		return redirect('/beer');
+	}
+	
+	public function getEdit($id = null)
+	{
+        $beer = \App\Beer::with('recipes')->find($id);
+		$ingredients = \App\Ingredient::get();
+
+        if(is_null($beer)) {
+            \Session::flash('flash_message','Beer not found.');
+            return redirect('\beer');
+        }
+        return view('beer.edit')->with(['beer'=>$beer, 'ingredients' => $ingredients]);			
 	}
 }

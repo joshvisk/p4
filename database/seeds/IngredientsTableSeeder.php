@@ -14,6 +14,12 @@ class IngredientsTableSeeder extends Seeder
 		DB::table('ingredients')->insert([
 			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+			'type' => '0',
+		]);
+		
+		DB::table('ingredients')->insert([
+			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'type' => '1',
 			'grain_type' => 'America',
 			'name' => '2 Row Malt',

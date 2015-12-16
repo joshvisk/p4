@@ -1,12 +1,16 @@
 @extends('layouts.master')
+
 @section('content')
-<form id="recipeform" name="recipeform" method="post" class="form-inline" action="/beer">
+
+<h1>Edit Recipe</h1>
+
+ <form id="recipeform" name="recipeform" method="post" class="form-inline" action="/beer">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
     <fieldset>
 		<legend>Name</legend>
         <div>
         	<label for="beer_name">Beer Name</label>
-            <input name="beer_name" id="beer_name" type="text" class="col-xs-3">
+            <input name="beer_name" id="beer_name" type="text" class="col-xs-3" value="{{ $beer->beer_name }}">
         </div>
         <div class="radio-inline">
             <label class="radio-inline">
@@ -23,6 +27,7 @@
         	<select name="grain1" class="form-control">
             	@foreach($ingredients as $ingredient)
                 	@if($ingredient->type === 0 || $ingredient->type === 1)
+                    	@if($beer->recipe->type
  	                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
                     @endif
 				@endforeach

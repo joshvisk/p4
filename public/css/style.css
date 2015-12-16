@@ -65,3 +65,6 @@
 	-moz-animation-duration: 0.5s;
 	animation-duration: 0.5s;
   }
+  
+  .hidden { visibility: hidden; }
+  .unhidden { visibility: visible; }
