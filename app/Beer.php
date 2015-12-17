@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Beer extends Model
 {
-	public function recipes() {
+	public function recipe() {
         # Beer has many recipe parts
         # Define a one-to-Many relationship.
         return $this->hasMany('\App\Recipe');

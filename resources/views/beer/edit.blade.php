@@ -6,6 +6,8 @@
 
  <form id="recipeform" name="recipeform" method="post" class="form-inline" action="/beer">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <input type='hidden' name='id' value='{{ $beer->id }}'>
+
     <fieldset>
 		<legend>Name</legend>
         <div>
@@ -26,9 +28,14 @@
     	<div id="grain1">
         	<select name="grain1" class="form-control">
             	@foreach($ingredients as $ingredient)
+                {{ $selected = "" }}
                 	@if($ingredient->type === 0 || $ingredient->type === 1)
-                    	@if($beer->recipe->type
- 	                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                    	@foreach($recipe as $item => $recipeItem)
+                        	@if($recipeItem->order === 'grain1' && $recipeItem->type === 1 && $recipeItem->ingredient_id === $ingredient->id)
+                            	{{ $selected = ($ingredient->id == $recipeItem->ingredient_id) ? 'selected' : '' }}
+							@endif
+						@endforeach 
+                        <option value="{{ $ingredient->id }}" {{ $selected }}>{{ $ingredient->name }}</option>
                     @endif
 				@endforeach
             </select>
@@ -42,10 +49,18 @@
 			</select>
         </div>
     	<div id="grain2">
+ 
+                
         	<select name="grain2" class="form-control">
             	@foreach($ingredients as $ingredient)
+                {{ $selected = "" }}
                 	@if($ingredient->type === 0 || $ingredient->type === 1)
- 	                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                    	@foreach($recipe as $item => $recipeItem)
+                        	@if($recipeItem->order === 'grain2' && $recipeItem->type === 1 && $recipeItem->ingredient_id === $ingredient->id)
+                            	{{ $selected = ($ingredient->id == $recipeItem->ingredient_id) ? 'selected' : '' }}
+							@endif
+						@endforeach 
+                        <option value="{{ $ingredient->id }}" {{ $selected }}>{{ $ingredient->name }}</option>
                     @endif
 				@endforeach
 			</select>
@@ -61,8 +76,14 @@
     	<div id="grain3">
         	<select name="grain3" class="form-control">
             	@foreach($ingredients as $ingredient)
+                {{ $selected = "" }}
                 	@if($ingredient->type === 0 || $ingredient->type === 1)
- 	                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                    	@foreach($recipe as $item => $recipeItem)
+                        	@if($recipeItem->order === 'grain3' && $recipeItem->type === 1 && $recipeItem->ingredient_id === $ingredient->id)
+                            	{{ $selected = ($ingredient->id == $recipeItem->ingredient_id) ? 'selected' : '' }}
+							@endif
+						@endforeach 
+                        <option value="{{ $ingredient->id }}" {{ $selected }}>{{ $ingredient->name }}</option>
                     @endif
 				@endforeach
 			</select>
@@ -77,9 +98,15 @@
         </div>
     	<div id="grain4">
         	<select name="grain4" class="form-control">
-             	@foreach($ingredients as $ingredient)
+            	@foreach($ingredients as $ingredient)
+                {{ $selected = "" }}
                 	@if($ingredient->type === 0 || $ingredient->type === 1)
- 	                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                    	@foreach($recipe as $item => $recipeItem)
+                        	@if($recipeItem->order === 'grain4' && $recipeItem->type === 1 && $recipeItem->ingredient_id === $ingredient->id)
+                            	{{ $selected = ($ingredient->id == $recipeItem->ingredient_id) ? 'selected' : '' }}
+							@endif
+						@endforeach 
+                        <option value="{{ $ingredient->id }}" {{ $selected }}>{{ $ingredient->name }}</option>
                     @endif
 				@endforeach
 			</select>
@@ -95,18 +122,24 @@
     	<div id="grain5">
         	<select name="grain5" class="form-control">
             	@foreach($ingredients as $ingredient)
+                {{ $selected = "" }}
                 	@if($ingredient->type === 0 || $ingredient->type === 1)
- 	                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                    	@foreach($recipe as $item => $recipeItem)
+                        	@if($recipeItem->order === 'grain5' && $recipeItem->type === 1 && $recipeItem->ingredient_id === $ingredient->id)
+                            	{{ $selected = ($ingredient->id == $recipeItem->ingredient_id) ? 'selected' : '' }}
+							@endif
+						@endforeach 
+                        <option value="{{ $ingredient->id }}" {{ $selected }}>{{ $ingredient->name }}</option>
                     @endif
 				@endforeach
 			</select>
             <input name="grainAmt5" type="text" class="form-control" placeholder="Amount">
         	<select name="grainMeasure5" class="form-control">
-                <option value="oz" selected>oz</option>
-                <option value="lb">lb</option>
-                <option value="tsp">tsp</option>
-                <option value="tbsp">tbsp</option>
-                <option value="package">package</option>
+                <option value="oz" {{ $selected }}>oz</option>
+                <option value="lb" {{ $selected }}>lb</option>
+                <option value="tsp" {{ $selected }}>tsp</option>
+                <option value="tbsp" {{ $selected }}>tbsp</option>
+                <option value="package" {{ $selected }}>package</option>
 			</select>
         </div>
     </fieldset>
@@ -115,8 +148,14 @@
     	<div>
         	<select name="hops1" class="form-control">
             	@foreach($ingredients as $ingredient)
+                {{ $selected = "" }}
                 	@if($ingredient->type === 0 || $ingredient->type === 2)
- 	                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                    	@foreach($recipe as $item => $recipeItem)
+                        	@if($recipeItem->order === 'hops1' && $recipeItem->type === 2 && $recipeItem->ingredient_id === $ingredient->id)
+                            	{{ $selected = ($ingredient->id == $recipeItem->ingredient_id) ? 'selected' : '' }}
+							@endif
+						@endforeach 
+                        <option value="{{ $ingredient->id }}" {{ $selected }}>{{ $ingredient->name }}</option>
                     @endif
 				@endforeach
 			</select>
@@ -132,8 +171,14 @@
     	<div>
         	<select name="hops2" class="form-control">
             	@foreach($ingredients as $ingredient)
+                {{ $selected = "" }}
                 	@if($ingredient->type === 0 || $ingredient->type === 2)
- 	                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                    	@foreach($recipe as $item => $recipeItem)
+                        	@if($recipeItem->order === 'hops2' && $recipeItem->type === 2 && $recipeItem->ingredient_id === $ingredient->id)
+                            	{{ $selected = ($ingredient->id == $recipeItem->ingredient_id) ? 'selected' : '' }}
+							@endif
+						@endforeach 
+                        <option value="{{ $ingredient->id }}" {{ $selected }}>{{ $ingredient->name }}</option>
                     @endif
 				@endforeach
 			</select>
@@ -148,9 +193,15 @@
         </div>
     	<div>
         	<select name="hops3" class="form-control">
-             	@foreach($ingredients as $ingredient)
+            	@foreach($ingredients as $ingredient)
+                {{ $selected = "" }}
                 	@if($ingredient->type === 0 || $ingredient->type === 2)
- 	                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                    	@foreach($recipe as $item => $recipeItem)
+                        	@if($recipeItem->order === 'hops3' && $recipeItem->type === 2 && $recipeItem->ingredient_id === $ingredient->id)
+                            	{{ $selected = ($ingredient->id == $recipeItem->ingredient_id) ? 'selected' : '' }}
+							@endif
+						@endforeach 
+                        <option value="{{ $ingredient->id }}" {{ $selected }}>{{ $ingredient->name }}</option>
                     @endif
 				@endforeach
 			</select>
@@ -166,8 +217,14 @@
     	<div>
         	<select name="hops4" class="form-control">
             	@foreach($ingredients as $ingredient)
+                {{ $selected = "" }}
                 	@if($ingredient->type === 0 || $ingredient->type === 2)
- 	                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                    	@foreach($recipe as $item => $recipeItem)
+                        	@if($recipeItem->order === 'hops4' && $recipeItem->type === 2 && $recipeItem->ingredient_id === $ingredient->id)
+                            	{{ $selected = ($ingredient->id == $recipeItem->ingredient_id) ? 'selected' : '' }}
+							@endif
+						@endforeach 
+                        <option value="{{ $ingredient->id }}" {{ $selected }}>{{ $ingredient->name }}</option>
                     @endif
 				@endforeach
 			</select>
@@ -183,8 +240,14 @@
     	<div>
         	<select name="hops5" class="form-control">
             	@foreach($ingredients as $ingredient)
+                {{ $selected = "" }}
                 	@if($ingredient->type === 0 || $ingredient->type === 2)
- 	                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                    	@foreach($recipe as $item => $recipeItem)
+                        	@if($recipeItem->order === 'hops5' && $recipeItem->type === 2 && $recipeItem->ingredient_id === $ingredient->id)
+                            	{{ $selected = ($ingredient->id == $recipeItem->ingredient_id) ? 'selected' : '' }}
+							@endif
+						@endforeach 
+                        <option value="{{ $ingredient->id }}" {{ $selected }}>{{ $ingredient->name }}</option>
                     @endif
 				@endforeach
 			</select>
@@ -203,8 +266,14 @@
     	<div>
         	<select name="yeast" class="form-control">
             	@foreach($ingredients as $ingredient)
+                {{ $selected = "" }}
                 	@if($ingredient->type === 0 || $ingredient->type === 3)
- 	                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                    	@foreach($recipe as $item => $recipeItem)
+                        	@if($recipeItem->order === 'yeast' && $recipeItem->type === 3 && $recipeItem->ingredient_id === $ingredient->id)
+                            	{{ $selected = ($ingredient->id == $recipeItem->ingredient_id) ? 'selected' : '' }}
+							@endif
+						@endforeach 
+                        <option value="{{ $ingredient->id }}" {{ $selected }}>{{ $ingredient->name }}</option>
                     @endif
 				@endforeach
 			</select>
@@ -223,8 +292,14 @@
     	<div>
         	<select name="sugar1" class="form-control">
             	@foreach($ingredients as $ingredient)
+                {{ $selected = "" }}
                 	@if($ingredient->type === 0 || $ingredient->type === 4)
- 	                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                    	@foreach($recipe as $item => $recipeItem)
+                        	@if($recipeItem->order === 'sugar1' && $recipeItem->type === 4 && $recipeItem->ingredient_id === $ingredient->id)
+                            	{{ $selected = ($ingredient->id == $recipeItem->ingredient_id) ? 'selected' : '' }}
+							@endif
+						@endforeach 
+                        <option value="{{ $ingredient->id }}" {{ $selected }}>{{ $ingredient->name }}</option>
                     @endif
 				@endforeach
 			</select>
@@ -240,8 +315,14 @@
     	<div>
         	<select name="sugar2" class="form-control">
             	@foreach($ingredients as $ingredient)
+                {{ $selected = "" }}
                 	@if($ingredient->type === 0 || $ingredient->type === 4)
- 	                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                    	@foreach($recipe as $item => $recipeItem)
+                        	@if($recipeItem->order === 'sugar2' && $recipeItem->type === 4 && $recipeItem->ingredient_id === $ingredient->id)
+                            	{{ $selected = ($ingredient->id == $recipeItem->ingredient_id) ? 'selected' : '' }}
+							@endif
+						@endforeach 
+                        <option value="{{ $ingredient->id }}" {{ $selected }}>{{ $ingredient->name }}</option>
                     @endif
 				@endforeach
 			</select>
@@ -257,8 +338,14 @@
     	<div>
         	<select name="sugar3" class="form-control">
             	@foreach($ingredients as $ingredient)
+                {{ $selected = "" }}
                 	@if($ingredient->type === 0 || $ingredient->type === 4)
- 	                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                    	@foreach($recipe as $item => $recipeItem)
+                        	@if($recipeItem->order === 'sugar3' && $recipeItem->type === 4 && $recipeItem->ingredient_id === $ingredient->id)
+                            	{{ $selected = ($ingredient->id == $recipeItem->ingredient_id) ? 'selected' : '' }}
+							@endif
+						@endforeach 
+                        <option value="{{ $ingredient->id }}" {{ $selected }}>{{ $ingredient->name }}</option>
                     @endif
 				@endforeach
 			</select>
@@ -274,8 +361,14 @@
     	<div>
         	<select name="sugar4" class="form-control">
             	@foreach($ingredients as $ingredient)
+                {{ $selected = "" }}
                 	@if($ingredient->type === 0 || $ingredient->type === 4)
- 	                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                    	@foreach($recipe as $item => $recipeItem)
+                        	@if($recipeItem->order === 'sugar4' && $recipeItem->type === 4 && $recipeItem->ingredient_id === $ingredient->id)
+                            	{{ $selected = ($ingredient->id == $recipeItem->ingredient_id) ? 'selected' : '' }}
+							@endif
+						@endforeach 
+                        <option value="{{ $ingredient->id }}" {{ $selected }}>{{ $ingredient->name }}</option>
                     @endif
 				@endforeach
 			</select>
@@ -291,8 +384,14 @@
     	<div>
         	<select name="sugar5" class="form-control">
             	@foreach($ingredients as $ingredient)
+                {{ $selected = "" }}
                 	@if($ingredient->type === 0 || $ingredient->type === 4)
- 	                    <option>{{ $ingredient->name }}</option>
+                    	@foreach($recipe as $item => $recipeItem)
+                        	@if($recipeItem->order === 'sugar5' && $recipeItem->type === 4 && $recipeItem->ingredient_id === $ingredient->id)
+                            	{{ $selected = ($ingredient->id == $recipeItem->ingredient_id) ? 'selected' : '' }}
+							@endif
+						@endforeach 
+                        <option value="{{ $ingredient->id }}" {{ $selected }}>{{ $ingredient->name }}</option>
                     @endif
 				@endforeach
 			</select>
@@ -311,8 +410,14 @@
     	<div>
         	<select name="additive1" class="form-control">
             	@foreach($ingredients as $ingredient)
+                {{ $selected = "" }}
                 	@if($ingredient->type === 0 || $ingredient->type === 5)
- 	                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                    	@foreach($recipe as $item => $recipeItem)
+                        	@if($recipeItem->order === 'additive1' && $recipeItem->type === 5 && $recipeItem->ingredient_id === $ingredient->id)
+                            	{{ $selected = ($ingredient->id == $recipeItem->ingredient_id) ? 'selected' : '' }}
+							@endif
+						@endforeach 
+                        <option value="{{ $ingredient->id }}" {{ $selected }}>{{ $ingredient->name }}</option>
                     @endif
 				@endforeach
 			</select>
@@ -327,9 +432,15 @@
         </div>
     	<div>
         	<select name="additive2" class="form-control">
-             	@foreach($ingredients as $ingredient)
+            	@foreach($ingredients as $ingredient)
+                {{ $selected = "" }}
                 	@if($ingredient->type === 0 || $ingredient->type === 5)
- 	                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                    	@foreach($recipe as $item => $recipeItem)
+                        	@if($recipeItem->order === 'additive2' && $recipeItem->type === 5 && $recipeItem->ingredient_id === $ingredient->id)
+                            	{{ $selected = ($ingredient->id == $recipeItem->ingredient_id) ? 'selected' : '' }}
+							@endif
+						@endforeach 
+                        <option value="{{ $ingredient->id }}" {{ $selected }}>{{ $ingredient->name }}</option>
                     @endif
 				@endforeach
 			</select>
@@ -345,8 +456,14 @@
     	<div>
         	<select name="additive3" class="form-control">
             	@foreach($ingredients as $ingredient)
+                {{ $selected = "" }}
                 	@if($ingredient->type === 0 || $ingredient->type === 5)
- 	                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                    	@foreach($recipe as $item => $recipeItem)
+                        	@if($recipeItem->order === 'additive3' && $recipeItem->type === 5 && $recipeItem->ingredient_id === $ingredient->id)
+                            	{{ $selected = ($ingredient->id == $recipeItem->ingredient_id) ? 'selected' : '' }}
+							@endif
+						@endforeach 
+                        <option value="{{ $ingredient->id }}" {{ $selected }}>{{ $ingredient->name }}</option>
                     @endif
 				@endforeach
 			</select>
@@ -362,8 +479,14 @@
     	<div>
         	<select name="additive4" class="form-control">
             	@foreach($ingredients as $ingredient)
+                {{ $selected = "" }}
                 	@if($ingredient->type === 0 || $ingredient->type === 5)
- 	                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                    	@foreach($recipe as $item => $recipeItem)
+                        	@if($recipeItem->order === 'additive4' && $recipeItem->type === 5 && $recipeItem->ingredient_id === $ingredient->id)
+                            	{{ $selected = ($ingredient->id == $recipeItem->ingredient_id) ? 'selected' : '' }}
+							@endif
+						@endforeach 
+                        <option value="{{ $ingredient->id }}" {{ $selected }}>{{ $ingredient->name }}</option>
                     @endif
 				@endforeach
 			</select>
@@ -379,8 +502,14 @@
     	<div>
         	<select name="additive5" class="form-control">
             	@foreach($ingredients as $ingredient)
+                {{ $selected = "" }}
                 	@if($ingredient->type === 0 || $ingredient->type === 5)
- 	                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                    	@foreach($recipe as $item => $recipeItem)
+                        	@if($recipeItem->order === 'additive5' && $recipeItem->type === 5 && $recipeItem->ingredient_id === $ingredient->id)
+                            	{{ $selected = ($ingredient->id == $recipeItem->ingredient_id) ? 'selected' : '' }}
+							@endif
+						@endforeach 
+                        <option value="{{ $ingredient->id }}" {{ $selected }}>{{ $ingredient->name }}</option>
                     @endif
 				@endforeach
 			</select>
@@ -398,6 +527,6 @@
 	<legend>Directions</legend>
 	<textarea class="form-control" rows="10" name="directions"></textarea>
 </fieldset>
-	<button type="submit" class="btn btn-primary">Create Recipe</button>
+	<button type="submit" class="btn btn-primary">Update Recipe</button>
 </form>
 @stop

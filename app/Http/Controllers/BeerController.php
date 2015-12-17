@@ -38,6 +38,7 @@ class BeerController extends Controller
 		// Grain 1
 		if($request->input("grain1")) {
 			$recipe->type = 1;
+			$recipe->order = $request->input;
 		};
 		$recipe->amt = $request->grainAmt1;
 		$recipe->measure = $request->grainMeasure1;
@@ -244,8 +245,38 @@ class BeerController extends Controller
 	public function getCreate()
 	{	
 		$ingredients = \App\Ingredient::get();
+        $ingredients_for_dropdown = $ingredients->getIngredientsForDropdown();
+		
+		return view('beer.create')
+			->with('ingredients', $ingredients)
+			->with('ingredients_for_dropdown', $ingredients_for_dropdown);
+	}
 
-		return view('beer.create')->with('ingredients', $ingredients);
+	public function getEdit($id = null)
+	{
+        $beer = \App\Beer::find($id);
+		$recipe = \App\Recipe::where('beer_id', $id)->get();
+		$ingredients = \App\Ingredient::get();
+        //$ingredients_for_dropdown = $ingredients->getIngredientsForDropdown();
+			
+        if(is_null($beer)) {
+            \Session::flash('flash_message','Beer not found.');
+            return redirect('\beer');
+        }
+		$ingredients_for_this_recipe = [];
+        foreach($beer->recipe as $ingredient) {
+            $ingredients_for_this_recipe[] = $ingredient;
+        }
+		
+
+		//dump($ingredients_for_this_recipe);
+		
+        return view('beer.edit')
+			->with('beer', $beer)
+			->with('recipe', $recipe)			
+			->with('ingredients', $ingredients)
+			//->with('ingredients_for_dropdown', $ingredients_for_dropdown)
+			->with('ingredients_for_this_recipe', $ingredients_for_this_recipe);			
 	}
 	
 	public function getDelete($id)
@@ -264,15 +295,4 @@ class BeerController extends Controller
 		return redirect('/beer');
 	}
 	
-	public function getEdit($id = null)
-	{
-        $beer = \App\Beer::with('recipes')->find($id);
-		$ingredients = \App\Ingredient::get();
-
-        if(is_null($beer)) {
-            \Session::flash('flash_message','Beer not found.');
-            return redirect('\beer');
-        }
-        return view('beer.edit')->with(['beer'=>$beer, 'ingredients' => $ingredients]);			
-	}
 }

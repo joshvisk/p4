@@ -23,13 +23,9 @@ class CreateRecipesTable extends Migration
 			
 			# The rest of the fields...
 			$table->integer('type');
+			$table->string('order');
 			$table->integer('amt');
 			$table->string('measure');	
-/*			$table->decimal('grain_amt');	
-			$table->decimal('hops_amt');	
-			$table->decimal('yeast_amt');
-			$table->decimal('sugar_amt');
-			$table->decimal('additive_amt');*/
 			$table->decimal('water_amt');	
 			$table->integer('boil_time');
 		});
