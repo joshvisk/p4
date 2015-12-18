@@ -38,6 +38,7 @@ Route::get('/beer/recipe/{id}', 'BeerController@getRecipe');
 Route::group(['middleware' => 'auth'], function() {
 	
 	Route::post('/beer', 'BeerController@postBeer');
+	Route::post('/beer/recipe/edit', 'BeerController@postEdit');
 	Route::get('/beer/create', 'BeerController@getCreate');
 	Route::get('/beer/delete/{id}', 'BeerController@getDelete');
 	Route::get('/beer/recipe/edit/{id}', 'BeerController@getEdit');	

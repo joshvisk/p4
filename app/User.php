@@ -42,28 +42,4 @@ class User extends Model implements AuthenticatableContract,
         # Define a one-to-many relationship.
         return $this->hasMany('\App\Beer');
     }
-	
-	public function address() {
-        # User has many addresses
-        # Define a one-to-many relationship.
-        return $this->hasMany('\App\Address');
-    }
-	
-	public function phone() {
-        # User has many phone numbers
-        # Define a one-to-many relationship.
-        return $this->hasMany('\App\phone');
-    }
-	
-	public function email() {
-        # User has many emails
-        # Define a one-to-many relationship.
-        return $this->hasOne('\App\email');
-    }
-	
-	public function password() {
-        # User has many Passwords
-        # Define a one-to-many relationship.
-        return $this->hasMany('\App\password');
-    }
 }

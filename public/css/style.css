@@ -1,51 +1,101 @@
 /* CSS Document */
-  .tabs input[type=radio] {
-	  position: absolute;
-	  top: -9999px;
-	  left: -9999px;
-  }
-  .tabs {
+
+body {
+	background-color: lightslategrey;
+	color: #E4E4E4;	
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+	color: #E4E4E4;	
+}
+
+textarea {
+	width: 400px;
+	margin-bottom: 10px;
+}
+
+fieldset {
+	margin-top: 20px;	
+}
+
+@media (min-width: 768px) {
+	.form-inline .form-group {
+		margin-top:4px;
+	}
+}
+
+@media (min-width: 992px) {
+	.container {
+		width: 750px;	
+	}
+}
+
+.form-control, input {
+	background-color: #E9E9E9;
+	color:#555;	
+}
+
+.beer_name {
+	width: 100%;	
+}
+
+.show{
+	display:inline !important;	
+}
+.personal_radio {
+	margin-top: 20px;	
+}
+
+#header_button{ margin-right: 15px;}
+
+/* css for personal and private recipe tabs */
+.tabs input[type=radio] {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+}
+.tabs {
 	float: none;
 	list-style: none;
 	position: relative;
 	padding: 0;
 	margin: 75px auto;
-  }
-  .tabs li{
+}
+.tabs li{
 	float: left;
-  }
-  .tabs label {
-	  display: block;
-	  padding: 10px 20px;
-	  border-radius: 2px 2px 0 0;
-	  color: #474747;
-	  font-size: 24px;
-	  font-weight: normal;
-	  font-family: 'Lily Script One', helveti;
-	  background: rgba(255,255,255,0.2);
-	  cursor: pointer;
-	  position: relative;
-	  top: 3px;
-	  -webkit-transition: all 0.2s ease-in-out;
-	  -moz-transition: all 0.2s ease-in-out;
-	  -o-transition: all 0.2s ease-in-out;
-	  transition: all 0.2s ease-in-out;
-  }
-  .tabs label:hover {
+}
+.tabs label {
+	display: block;
+	padding: 10px 20px;
+	border-radius: 2px 2px 0 0;
+	color: #DDDDDD;
+	font-size: 24px;
+	font-weight: normal;
+	font-family: 'Lily Script One', helveti;
+	background: rgba(255,255,255,0.2);
+	cursor: pointer;
+	position: relative;
+	top: 3px;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+.tabs label:hover {
 	background: rgba(255,255,255,0.5);
 	top: 0;
-  }
-   
-	[id^=tab]:checked + label {
-		background: #C9C9C9;
-		color: #474747;
-		top: 0;
-  }
-   
-  [id^=tab]:checked ~ [id^=tab-content] {
-	  display: block;
-  }
-  .tab-content{
+}
+
+[id^=tab]:checked + label {
+	background: #C9C9C9;
+	color: #474747;
+	top: 0;
+}
+
+[id^=tab]:checked ~ [id^=tab-content] {
+	display: block;
+}
+.tab-content{
 	z-index: 2;
 	display: none;
 	text-align: left;
@@ -55,7 +105,7 @@
 	padding-top: 10px;
 	background: #C1C1C1;
 	padding: 15px;
-	color: white;
+	color: #fff;
 	position: absolute;
 	top: 53px;
 	left: 0;
@@ -64,7 +114,7 @@
 	-o-animation-duration: 0.5s;
 	-moz-animation-duration: 0.5s;
 	animation-duration: 0.5s;
-  }
-  
-  .hidden { visibility: hidden; }
-  .unhidden { visibility: visible; }
+}
+
+.hidden { visibility: hidden; }
+.unhidden { visibility: visible; }

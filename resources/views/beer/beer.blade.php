@@ -1,7 +1,4 @@
 @extends('layouts.master')
-@section('header')
-	{!! Html::style("/css/style.css") !!}
-@stop
 @section('content')
     <div>          
         <h1>Beers</h1>

@@ -4,22 +4,22 @@
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
     <fieldset>
 		<legend>Name</legend>
-        <div>
+        <div class="beer_name">
         	<label for="beer_name">Beer Name</label>
-            <input name="beer_name" id="beer_name" type="text" class="col-xs-3">
+            <input name="beer_name" id="beer_name" type="text">
         </div>
-        <div class="radio-inline">
+        <div class="form-group">
             <label class="radio-inline">
-                <input type="radio" name="personal" id="inlineRadio1" value="true"> Public
+                <input type="radio" name="personal" id="inlineRadio1" value="0"> Public
             </label>
             <label class="radio-inline">
-                <input type="radio" name="personal" id="inlineRadio2" value="false"> Private
+                <input type="radio" name="personal" id="inlineRadio2" value="1" checked> Private
             </label>
         </div>        
     </fieldset>
     <fieldset>
     	<legend>Grains</legend>
-    	<div id="grain1">
+    	<div id="grain1" class="form-group">
         	<select name="grain1" class="form-control">
             	@foreach($ingredients as $ingredient)
                 	@if($ingredient->type === 0 || $ingredient->type === 1)
@@ -29,14 +29,14 @@
             </select>
             <input name="grainAmt1" type="text" class="form-control" placeholder="Amount">
         	<select name="grainMeasure1" class="form-control">
-                <option value="oz" selected>oz</option>
-                <option value="lb">lb</option>
+                <option value="oz">oz</option>
+                <option value="lb" selected>lb</option>
                 <option value="tsp">tsp</option>
                 <option value="tbsp">tbsp</option>
                 <option value="package">package</option>
 			</select>
         </div>
-    	<div id="grain2">
+    	<div id="grain2" class="form-group">
         	<select name="grain2" class="form-control">
             	@foreach($ingredients as $ingredient)
                 	@if($ingredient->type === 0 || $ingredient->type === 1)
@@ -46,14 +46,14 @@
 			</select>
             <input name="grainAmt2" type="text" class="form-control" placeholder="Amount">
         	<select name="grainMeasure2" class="form-control">
-                <option value="oz" selected>oz</option>
-                <option value="lb">lb</option>
+                <option value="oz">oz</option>
+                <option value="lb" selected>lb</option>
                 <option value="tsp">tsp</option>
                 <option value="tbsp">tbsp</option>
                 <option value="package">package</option>
 			</select>
         </div>
-    	<div id="grain3">
+    	<div id="grain3" class="form-group">
         	<select name="grain3" class="form-control">
             	@foreach($ingredients as $ingredient)
                 	@if($ingredient->type === 0 || $ingredient->type === 1)
@@ -63,14 +63,14 @@
 			</select>
             <input name="grainAmt3" type="text" class="form-control" placeholder="Amount">
         	<select name="grainMeasure3" class="form-control">
-                <option value="oz" selected>oz</option>
-                <option value="lb">lb</option>
+                <option value="oz">oz</option>
+                <option value="lb" selected>lb</option>
                 <option value="tsp">tsp</option>
                 <option value="tbsp">tbsp</option>
                 <option value="package">package</option>
 			</select>
         </div>
-    	<div id="grain4">
+    	<div id="grain4" class="form-group">
         	<select name="grain4" class="form-control">
              	@foreach($ingredients as $ingredient)
                 	@if($ingredient->type === 0 || $ingredient->type === 1)
@@ -80,14 +80,14 @@
 			</select>
             <input name="grainAmt4" type="text" class="form-control" placeholder="Amount">
         	<select name="grainMeasure4" class="form-control">
-                <option value="oz" selected>oz</option>
-                <option value="lb">lb</option>
+                <option value="oz">oz</option>
+                <option value="lb" selected>lb</option>
                 <option value="tsp">tsp</option>
                 <option value="tbsp">tbsp</option>
                 <option value="package">package</option>
 			</select>
         </div>
-    	<div id="grain5">
+    	<div id="grain5" class="form-group">
         	<select name="grain5" class="form-control">
             	@foreach($ingredients as $ingredient)
                 	@if($ingredient->type === 0 || $ingredient->type === 1)
@@ -97,8 +97,8 @@
 			</select>
             <input name="grainAmt5" type="text" class="form-control" placeholder="Amount">
         	<select name="grainMeasure5" class="form-control">
-                <option value="oz" selected>oz</option>
-                <option value="lb">lb</option>
+                <option value="oz">oz</option>
+                <option value="lb" selected>lb</option>
                 <option value="tsp">tsp</option>
                 <option value="tbsp">tbsp</option>
                 <option value="package">package</option>
@@ -107,7 +107,7 @@
     </fieldset>
     <fieldset>
     	<legend>Hops</legend>
-    	<div>
+    	<div id="hops1" class="form-group">
         	<select name="hops1" class="form-control">
             	@foreach($ingredients as $ingredient)
                 	@if($ingredient->type === 0 || $ingredient->type === 2)
@@ -124,7 +124,7 @@
                 <option value="package">package</option>
 			</select>
         </div>
-    	<div>
+    	<div id="hops2" class="form-group">
         	<select name="hops2" class="form-control">
             	@foreach($ingredients as $ingredient)
                 	@if($ingredient->type === 0 || $ingredient->type === 2)
@@ -141,7 +141,7 @@
                 <option value="package">package</option>
 			</select>
         </div>
-    	<div>
+    	<div id="hops3" class="form-group">
         	<select name="hops3" class="form-control">
              	@foreach($ingredients as $ingredient)
                 	@if($ingredient->type === 0 || $ingredient->type === 2)
@@ -158,7 +158,7 @@
                 <option value="package">package</option>
 			</select>
         </div>
-    	<div>
+    	<div id="hops4" class="form-group">
         	<select name="hops4" class="form-control">
             	@foreach($ingredients as $ingredient)
                 	@if($ingredient->type === 0 || $ingredient->type === 2)
@@ -175,7 +175,7 @@
                 <option value="package">package</option>
 			</select>
         </div>
-    	<div>
+    	<div id="hops5" class="form-group">
         	<select name="hops5" class="form-control">
             	@foreach($ingredients as $ingredient)
                 	@if($ingredient->type === 0 || $ingredient->type === 2)
@@ -195,7 +195,7 @@
     </fieldset>  
     <fieldset>
     	<legend>Yeast</legend>
-    	<div>
+    	<div id="yeast" class="form-group">
         	<select name="yeast" class="form-control">
             	@foreach($ingredients as $ingredient)
                 	@if($ingredient->type === 0 || $ingredient->type === 3)
@@ -215,7 +215,7 @@
     </fieldset>    
     <fieldset>
     	<legend>Sugar</legend>
-    	<div>
+    	<div id="sugar1" class="form-group">
         	<select name="sugar1" class="form-control">
             	@foreach($ingredients as $ingredient)
                 	@if($ingredient->type === 0 || $ingredient->type === 4)
@@ -232,7 +232,7 @@
                 <option value="package">package</option>
 			</select>
         </div>
-    	<div>
+    	<div id="sugar2" class="form-group">
         	<select name="sugar2" class="form-control">
             	@foreach($ingredients as $ingredient)
                 	@if($ingredient->type === 0 || $ingredient->type === 4)
@@ -249,7 +249,7 @@
                 <option value="package">package</option>
 			</select>
         </div>
-    	<div>
+    	<div id="sugar3" class="form-group">
         	<select name="sugar3" class="form-control">
             	@foreach($ingredients as $ingredient)
                 	@if($ingredient->type === 0 || $ingredient->type === 4)
@@ -266,7 +266,7 @@
                 <option value="package">package</option>
 			</select>
         </div>
-    	<div>
+    	<div id="sugar4" class="form-group">
         	<select name="sugar4" class="form-control">
             	@foreach($ingredients as $ingredient)
                 	@if($ingredient->type === 0 || $ingredient->type === 4)
@@ -283,11 +283,11 @@
                 <option value="package">package</option>
 			</select>
         </div>
-    	<div>
+    	<div id="sugar5" class="form-group">
         	<select name="sugar5" class="form-control">
             	@foreach($ingredients as $ingredient)
                 	@if($ingredient->type === 0 || $ingredient->type === 4)
- 	                    <option>{{ $ingredient->name }}</option>
+ 	                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
                     @endif
 				@endforeach
 			</select>
@@ -303,7 +303,7 @@
     </fieldset>    
     <fieldset>
     	<legend>Additives</legend>
-    	<div>
+    	<div id="additive1" class="form-group">
         	<select name="additive1" class="form-control">
             	@foreach($ingredients as $ingredient)
                 	@if($ingredient->type === 0 || $ingredient->type === 5)
@@ -320,7 +320,7 @@
                 <option value="package">package</option>
 			</select>
         </div>
-    	<div>
+    	<div id="additive2" class="form-group">
         	<select name="additive2" class="form-control">
              	@foreach($ingredients as $ingredient)
                 	@if($ingredient->type === 0 || $ingredient->type === 5)
@@ -337,7 +337,7 @@
                 <option value="package">package</option>
 			</select>
         </div>
-    	<div>
+    	<div id="additive3" class="form-group">
         	<select name="additive3" class="form-control">
             	@foreach($ingredients as $ingredient)
                 	@if($ingredient->type === 0 || $ingredient->type === 5)
@@ -354,7 +354,7 @@
                 <option value="package">package</option>
 			</select>
         </div>
-    	<div>
+    	<div id="additive4" class="form-group">
         	<select name="additive4" class="form-control">
             	@foreach($ingredients as $ingredient)
                 	@if($ingredient->type === 0 || $ingredient->type === 5)
@@ -371,7 +371,7 @@
                 <option value="package">package</option>
 			</select>
         </div>
-    	<div>
+    	<div id="additive5" class="form-group">
         	<select name="additive5" class="form-control">
             	@foreach($ingredients as $ingredient)
                 	@if($ingredient->type === 0 || $ingredient->type === 5)

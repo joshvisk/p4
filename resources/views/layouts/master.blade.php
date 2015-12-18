@@ -9,6 +9,7 @@
     {!! Html::style("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css") !!}
     {!! Html::script("http://code.jquery.com/jquery-1.11.3.min.js") !!}
     {!! Html::script("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js") !!}
+	{!! Html::style("/css/style.css") !!}
     @yield('header')
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,7 +24,7 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myDefaultNavbar1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                    <a class="navbar-brand" href="/">Brand</a>
+                    <a class="navbar-brand" href="#">P4</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="myDefaultNavbar1">
@@ -62,43 +63,6 @@
             </div>
         </div>
     </section>
-<!--    <div class="section well">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4">
-                    <h3 class="text-center">WHO WE ARE</h3>
-                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, ducimus, sit, quibusdam quidem recusandae veniam eos quod error nisi repellat excepturi laboriosam aspernatur suscipit possimus consectetur dolores nihil labore quas eius illo accusamus nulla sed blanditiis porro accusantium. Perspiciatis, perferendis!</h5>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <h3 class="text-center">GET IN TOUCH</h3>
-                    <address class="text-center">
-                        <strong>MyCompany, Inc.</strong><br>
-                        Sunny Autumn Plaza, Grand Coulee,<br>
-                        CA, 91308-4075, US<br>
-                        <abbr title="Phone">P:</abbr> (123) 456-7890
-                    </address>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <h3 class="text-center">NEWSLETTER</h3>
-                    <form>
-                        <div class="form-group col-lg-9 col-md-8 col-sm-10 col-xs-10">
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                        </div>
-                        <button type="submit" class="btn btn-default">Subscribe<br></button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <footer class="text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <p>Copyright © MyCompany. All rights reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>-->
 	<script src="temp/js/jquery-1.11.2.min.js"></script> 
     <script src="temp/js/bootstrap.min.js"></script>
 </body>

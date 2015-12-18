@@ -23,8 +23,7 @@ class CreateBeersTable extends Migration
 			
 			# The rest of the fields...
 			$table->string('beer_name');
-			$table->boolean('public');
-			$table->integer('mash_time');	
+			$table->integer('personal');
 			$table->text('directions');
 		});
 		
