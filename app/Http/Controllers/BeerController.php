@@ -29,7 +29,6 @@ class BeerController extends Controller
 	# function iterates through the request of a new beer recipe
 	public function postBeer(Request $request)
 	{
-		dump($request);
 		$beer = new \App\Beer();
         $beer->beer_name = $request->beer_name;
 		$beer->personal = $request->personal;

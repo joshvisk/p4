@@ -12,8 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+	return redirect('/beer');});
 # Show login form
 Route::get('/login', 'Auth\AuthController@getLogin');
 
